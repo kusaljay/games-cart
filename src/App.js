@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import Header from './components/Header';
+import CardsList from './components/CardsList';
+import Cart from './components/Cart';
+import data from './api/data';
+import './scss/global.scss';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    games: data
+  }
+
+  render() {
+    //console.log(this.state.games);
+    return (
+      
+      <div className="App">
+        <Header />
+        <CardsList games={this.state.games} />
+        <Cart />
+
+      </div>
+      
+    );
+    
+  }
+
+  
 }
 
 export default App;
