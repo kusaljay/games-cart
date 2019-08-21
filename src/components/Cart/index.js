@@ -16,9 +16,9 @@ class Cart extends Component {
 
   calcTotal = () => {
     const cartItems = this.state.cart;
-    let total = cartItems.reduce((acc, item) => acc + item.priceSale, 0);
-    //this.setState( {total: total});
-    return total;
+    const cartTotal = cartItems.reduce((acc, item) => acc + item.priceSale, 0);
+    this.setState( {total: cartTotal});
+    //return total;
   }
 
   countCartItems = () => {
@@ -35,12 +35,16 @@ class Cart extends Component {
   }
 
   render() {
+    const cartTotal = this.state.cart.reduce((acc, item) => acc + item.priceSale, 0);
+    //console.log(cartTotal)
+    //const cartTotal = this.calcTotal();
+    
 
     return (
       <div>
         <h2>Your Cart</h2>
         <CartListItem />
-        <h4>Total: {this.calcTotal()}</h4>
+        <h4>Total: {cartTotal}</h4>
       </div>
     );
   }
