@@ -1,13 +1,19 @@
 import React from 'react';
 import Flex, { FlexItem } from 'styled-flex-component';
 
-const Card = ({ gameInfo }) => {
+const Card = props => {
   const { title, 
           desc, 
           image, 
           priceOrig, 
           onSale, 
-          priceSale  } = gameInfo;
+          priceSale  } = props.gameInfo;
+  
+          //console.log(props.gameInfo);
+  
+  const handleAddToCart = () => {
+    return props.handleCartCount(props.gameInfo);
+  }
 
   return (
     <Flex full column>
@@ -24,7 +30,7 @@ const Card = ({ gameInfo }) => {
       </Flex>
       <Flex justifyAround>
         <FlexItem>
-          <button>Add to Cart</button>
+          <button onClick={handleAddToCart}>Add to Cart</button>
         </FlexItem>
         <FlexItem>
           <button>Save to Wishlist</button>
