@@ -1,50 +1,38 @@
 import React, { Component } from 'react';
-import CartListItem from '../CartListItem';
+import CartItemsList from '../CartItemsList';
 
 class Cart extends Component {
   state = {
     games: this.props.games,
-    cart : [],
-    total: 0
+    cart : []
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.cart !== prevProps.cart) {
-      this.setState({cart: this.props.cart})
+      this.setState({cart: this.props.cart});
     }
   }
-
-  calcTotal = () => {
+/*   
+  countCartItemQuantities() {
     const cartItems = this.state.cart;
-    const cartTotal = cartItems.reduce((acc, item) => acc + item.priceSale, 0);
-    this.setState( {total: cartTotal});
-    //return total;
-  }
-
-  countCartItems = () => {
-    const cartItems = this.state.cart;
-    const frequency = cartItems
+    const quantities = cartItems
       .map(({id}) => id)
-      .reduce((ids, id) => {
-        const count = ids[id] || 0;
-        ids[id] = count + 1;
-        return ids;
+      .reduce((acc, id) => {
+        const count = acc[id] || 0;
+        acc[id] = count + 1;
+        return acc;
       }, {}); 
-      
-      console.log(frequency);
+    return quantities;
+    //console.log(quantity);
   }
-
+ */
   render() {
-    const cartTotal = this.state.cart.reduce((acc, item) => acc + item.priceSale, 0);
-    //console.log(cartTotal)
-    //const cartTotal = this.calcTotal();
-    
-
+    //const uniqueItems = this.countCartItems();
     return (
       <div>
         <h2>Your Cart</h2>
-        <CartListItem />
-        <h4>Total: {cartTotal}</h4>
+        <CartItemsList cartItems={this.state.cart} />
+        <h4>Total: ${this.props.cartTotalPrice}</h4>
       </div>
     );
   }

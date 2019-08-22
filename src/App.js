@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from './components/Header';
-import CardsList from './components/GameCardsList';
+import GamesList from './components/GamesList';
 import Cart from './components/Cart';
 import data from './api/data';
 import './scss/global.scss';
@@ -10,7 +10,8 @@ class App extends Component {
     games: data,
     //cart: [],
     //cartCount: 0
-    cart: []
+    cart: [],
+    total: 0
   }
 
   /* handleCartCount = () => {
@@ -19,12 +20,16 @@ class App extends Component {
     this.setState({cartCount: cartCount});
   }
  */
-  handleCartCount = (item) => {
+
+  handleAddToCart = (item) => {
     const cartCount = [...this.state.cart];
     const newCartCount = cartCount.concat(item);
-    this.setState(() => {
-      return {cart: newCartCount};
-    });
+    const cartTotalPrice = newCartCount.reduce((acc, item) => acc + item.priceSale, 0);
+    // Cart Total items & Total Price
+    this.setState({
+      cart: newCartCount,
+      total: cartTotalPrice
+     });
   }
 
 /* 
@@ -37,17 +42,12 @@ class App extends Component {
   } */
 
   render() {
-    //console.log(this.state.games);
     return (
-      
       <div className="App">
         <Header cartCount={this.state.cart.length} />
-        <CardsList games={this.state.games} handleCartCount={this.handleCartCount} />
-        {/* <CardsList games={this.state.games} handleAddToCart={this.handleAddToCart} /> */}
-        <Cart games={this.state.games} cart={this.state.cart} />
-
+        <GamesList games={this.state.games} handleAddToCart={this.handleAddToCart} />
+        <Cart games={this.state.games} cart={this.state.cart} cartTotalPrice={this.state.total} />
       </div>
-      
     );
     
   }

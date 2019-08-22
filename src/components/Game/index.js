@@ -7,12 +7,12 @@ const Card = props => {
           image, 
           priceOrig, 
           onSale, 
-          priceSale  } = props.gameInfo;
+          priceSale } = props.gameInfo;
   
           //console.log(props.gameInfo);
   
   const handleAddToCart = () => {
-    return props.handleCartCount(props.gameInfo);
+    return props.handleAddToCart(props.gameInfo);
   }
 
   return (
