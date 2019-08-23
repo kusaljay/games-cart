@@ -14,13 +14,6 @@ class App extends Component {
     total: 0
   }
 
-  /* handleCartCount = () => {
-    let cartCount = this.state.cartCount;
-    cartCount++;
-    this.setState({cartCount: cartCount});
-  }
- */
-
   handleAddToCart = (item) => {
     const cartCount = [...this.state.cart];
     const newCartCount = cartCount.concat(item);

@@ -1,10 +1,11 @@
 import React from 'react';
 
-const CartItem = () => {
+const CartItem = props => {
   return (
     <div>
-      <span>Game Name</span>
+      <span>{props.cartItemTitle}</span>
       <button type="button">remove</button>
+      <span>{props.cartItemQuantity}</span>
       <input type="text" name="quantity" />
     </div>
   )
