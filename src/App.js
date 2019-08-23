@@ -25,6 +25,12 @@ class App extends Component {
      });
   }
 
+  handleRemoveFromCart = (e) => {
+    e.preventDefault();
+    //const cartCurrent = [...this.state.cart];
+    
+  }
+
 /* 
   handleAddToCart = (game) => {
     let cartItem = this.state.cart.find(item => item.id === game.id);
@@ -39,7 +45,11 @@ class App extends Component {
       <div className="App">
         <Header cartCount={this.state.cart.length} />
         <GamesList games={this.state.games} handleAddToCart={this.handleAddToCart} />
-        <Cart games={this.state.games} cart={this.state.cart} cartTotalPrice={this.state.total} />
+        <Cart 
+          games={this.state.games} 
+          cart={this.state.cart} 
+          cartTotalPrice={this.state.total}
+          removeItem={this.handleRemoveFromCart} />
       </div>
     );
     
