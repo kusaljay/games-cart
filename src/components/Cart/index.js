@@ -32,7 +32,9 @@ class Cart extends Component {
     const quantities = {};
     this.props.cart.forEach(el => {
       quantities[el.id] = ( quantities[el.id] || 0 ) + 1;
+      quantities[el.title] = ( quantities[el.title] || 0 ) + 1;
     })
+    console.log(quantities);
     /*Pass in the 'quantities' object to keys() method of Object constructor.
       Obtain an array of keys in the quantities object i.e. names of the games.
       Chain the resulting array to map() method 
@@ -41,14 +43,19 @@ class Cart extends Component {
     const cartItems = Object.keys(quantities).map((cartItemId, index) => {
     /* Use the game names (i.e keys in the object passed in i.e 'quantities')
         to obtain the numbers (i.e. values of 'quantities' object) */
-      
-      const cartItemQuantity = quantities[cartItemId];    
+      const cartItemQuantity = quantities[cartItemId];
+
+      console.log(cartItemId);
+
+      /* if (cartItemId === this.props.cart) {
+
+      } */
 
       return (
         <CartItem 
           key={index}
           cartItemId={cartItemId}
-          //cartItemTitle={gameName} 
+          /* cartItemTitle={cartItemName}  */
           cartItemQuantity={cartItemQuantity}
           removeItem={this.props.removeItem} />
         );
