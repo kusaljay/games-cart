@@ -32,7 +32,7 @@ class Cart extends Component {
     const quantities = {};
     this.props.cart.forEach(el => {
       quantities[el.id] = ( quantities[el.id] || 0 ) + 1;
-      quantities[el.title] = ( quantities[el.title] || 0 ) + 1;
+      quantities[el.title] = ( quantities[el.title]);
     })
     console.log(quantities);
     /*Pass in the 'quantities' object to keys() method of Object constructor.
@@ -47,15 +47,19 @@ class Cart extends Component {
 
       console.log(cartItemId);
 
-      /* if (cartItemId === this.props.cart) {
-
-      } */
+      const cartItemTitle = this.props.cart.filter(ele => {
+        if (ele.id === quantities[cartItemId]) {
+          return ele.title;
+        }
+        return null;
+      })
+      
 
       return (
         <CartItem 
           key={index}
           cartItemId={cartItemId}
-          /* cartItemTitle={cartItemName}  */
+          cartItemTitle={cartItemTitle}
           cartItemQuantity={cartItemQuantity}
           removeItem={this.props.removeItem} />
         );
