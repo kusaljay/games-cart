@@ -32,28 +32,18 @@ class Cart extends Component {
     const quantities = {};
     this.props.cart.forEach(el => {
       quantities[el.id] = ( quantities[el.id] || 0 ) + 1;
-      quantities[el.title] = ( quantities[el.title]);
     })
-    console.log(quantities);
     /*Pass in the 'quantities' object to keys() method of Object constructor.
       Obtain an array of keys in the quantities object i.e. names of the games.
       Chain the resulting array to map() method 
         and obtain a list of unique names of the games
         and pass them as a cartItemTitle prop */
-    const cartItems = Object.keys(quantities).map((cartItemId, index) => {
+    const cartItems = Object.keys(quantities).map((obj, index) => {
     /* Use the game names (i.e keys in the object passed in i.e 'quantities')
         to obtain the numbers (i.e. values of 'quantities' object) */
+      const cartItemId = obj * 1;
+      const cartItemTitle = (this.props.cart.find(obj => obj.id === cartItemId) || {}).title;
       const cartItemQuantity = quantities[cartItemId];
-
-      console.log(cartItemId);
-
-      const cartItemTitle = this.props.cart.filter(ele => {
-        if (ele.id === quantities[cartItemId]) {
-          return ele.title;
-        }
-        return null;
-      })
-      
 
       return (
         <CartItem 
