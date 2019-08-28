@@ -9,8 +9,6 @@ const Card = props => {
           onSale, 
           priceSale } = props.gameInfo;
   
-          //console.log(props.gameInfo);
-  
   const addItem = () => {
     return props.addItem(props.gameInfo);
   }

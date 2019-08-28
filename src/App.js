@@ -41,6 +41,19 @@ class App extends Component {
     this.calcTotalPrice(cartUpdated);
   }
 
+  handleQuantityInput = (e, currentQuantity, itemId) => {
+    e.preventDefault();
+    //const quantityInput = e.target.value * 1;
+    const cartItem =  this.state.cart.find(obj => obj.id === itemId);
+    console.log(cartItem, currentQuantity);
+    /* currentQuantity = 
+    if (e.target.value > currentQuantity) {
+      console.log('yes'); */
+      
+
+  }
+  
+
 /* 
   handleAddToCart = (game) => {
     let cartItem = this.state.cart.find(item => item.id === game.id);
@@ -60,7 +73,8 @@ class App extends Component {
           cart={this.state.cart} 
           cartTotalPrice={this.state.total}
           addItem={this.handleAddToCart}
-          removeItem={this.handleRemoveFromCart} />
+          removeItem={this.handleRemoveFromCart}
+          handleInput={this.handleQuantityInput} />
       </div>
     );
     

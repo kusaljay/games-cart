@@ -27,6 +27,10 @@ class Cart extends Component {
       return quantities;
   }
 
+  
+
+
+
   renderCartItems() {
     /* Create the empty object 'quantities' to hold each unique game's quantity */
     const quantities = {};
@@ -46,6 +50,7 @@ class Cart extends Component {
       const cartItemTitle = cartItem.title;
       const cartItemQuantity = quantities[cartItemId];
       const subTotal = (cartItem.priceSale) * cartItemQuantity;
+
       
 
       return (
@@ -55,10 +60,11 @@ class Cart extends Component {
           cartItemTitle={cartItemTitle}
           cartItemQuantity={cartItemQuantity}
           removeItem={this.props.removeItem}
-          subTotal={subTotal} />
+          subTotal={subTotal} 
+          quantityInput={this.props.handleInput} />
         );
     });
-    console.log(this.props.cart);
+
     return cartItems;
   }
 

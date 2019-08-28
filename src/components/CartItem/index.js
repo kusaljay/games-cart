@@ -5,9 +5,9 @@ const CartItem = props => {
     <div>
       <span>{props.cartItemId}</span>
       <span>{props.cartItemTitle}</span>
-      <button type="button" onClick={(ev) => props.removeItem(ev, props.cartItemId)} value={props.cartItemId}>remove</button>
-      <span>{props.cartItemQuantity}</span>
-      <input type="text" name="quantity" />
+      <button type="button" onClick={(e) => props.removeItem(e, props.cartItemId)} value={props.cartItemId}>remove</button>
+      {/* <span>{props.cartItemQuantity}</span> */}
+      <input type="text" onChange={props.quantityInput} value={props.cartItemQuantity} />
       <span>{props.subTotal}</span>
     </div>
   )
