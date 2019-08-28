@@ -11,8 +11,8 @@ const Card = props => {
   
           //console.log(props.gameInfo);
   
-  const handleAddToCart = () => {
-    return props.handleAddToCart(props.gameInfo);
+  const addItem = () => {
+    return props.addItem(props.gameInfo);
   }
 
   return (
@@ -30,7 +30,7 @@ const Card = props => {
       </Flex>
       <Flex justifyAround>
         <FlexItem>
-          <button onClick={handleAddToCart}>Add to Cart</button>
+          <button onClick={addItem}>Add to Cart</button>
         </FlexItem>
         <FlexItem>
           <button>Save to Wishlist</button>
