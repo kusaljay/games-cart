@@ -8,8 +8,6 @@ import './scss/global.scss';
 class App extends Component {
   state = {
     games: data,
-    //cart: [],
-    //cartCount: 0
     cart: [],
     total: 0
   }
@@ -43,25 +41,11 @@ class App extends Component {
 
   handleQuantityInput = (e, currentQuantity, itemId) => {
     e.preventDefault();
-    //const quantityInput = e.target.value * 1;
     const cartItem =  this.state.cart.find(obj => obj.id === itemId);
     console.log(cartItem, currentQuantity);
-    /* currentQuantity = 
-    if (e.target.value > currentQuantity) {
-      console.log('yes'); */
       
 
   }
-  
-
-/* 
-  handleAddToCart = (game) => {
-    let cartItem = this.state.cart.find(item => item.id === game.id);
-    if(!cartItem) {
-      this.setState({ cart: [...this.state.cart, game] });
-    }
-    console.log(game.id);
-  } */
 
   render() {
     return (
